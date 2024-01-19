@@ -20,7 +20,7 @@ from collections import Counter  # Módulo para contar elementos en una lista
 from wordcloud import WordCloud  # Librería para crear nubes de palabras visualmente atractivas
 import itertools  # Módulo para trabajar con combinaciones y permutaciones
 from sentiment_analysis_spanish import sentiment_analysis  # Librería para análisis de sentimientos en español
-import spacy  # Procesamiento de lenguaje natural con spaCy
+#import spacy  # Procesamiento de lenguaje natural con spaCy
 
 # Módulos para resumen de texto con sumy
 from sumy.parsers.plaintext import PlaintextParser  
@@ -32,6 +32,7 @@ import nltk
 from nltk.corpus import stopwords  
 from nltk.tokenize import word_tokenize  
 from nltk.stem import WordNetLemmatizer  
+from nltk import pos_tag, ne_chunk
 
 # Módulos para realizar solicitudes HTTP y realizar análisis de HTML
 import requests  
@@ -90,7 +91,10 @@ st.markdown("""
 nltk.download('punkt')
 nltk.download('stopwords')
 nltk.download('wordnet')
-nlp = spacy.load('es_core_news_sm')
+nltk.download('averaged_perceptron_tagger')
+nltk.download('maxent_ne_chunker')
+nltk.download('words')
+#nlp = spacy.load('es_core_news_sm')
 
 # Sidebar
 page = st.sidebar.selectbox("Seleccione una página", ("EDA", "ML", "NLP", "NLP Explorer"))
@@ -601,8 +605,24 @@ elif page == "NLP Explorer":
     col1, col2, col3, col4 = st.columns(4)
 
     if col1.button("Extraer Identidades"):
-        doc = nlp(st.session_state.text)
-        entities = [(entity.text, entity.label_) for entity in doc.ents]
+        text = st.session_state.text
+
+        # Tokenización de palabras
+        tokens = word_tokenize(text)
+
+        # Etiquetado gramatical
+        tagged_tokens = pos_tag(tokens)
+
+        # Reconocimiento de entidades nombradas (NER)
+        named_entities = ne_chunk(tagged_tokens)
+
+        entities = []
+        for entity in named_entities:
+            if hasattr(entity, 'label'):
+                label = entity.label()
+                if label == "PERSON" or label == "ORGANIZATION":
+                    entities.append((' '.join(child[0] for child in entity.leaves()), label))
+
         st.session_state.entities = entities
 
         if entities:
