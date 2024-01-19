@@ -676,3 +676,21 @@ elif page == "NLP Explorer":
             col4.write(f"Sentimiento: {category}")
         else:
             col4.warning("No hay texto disponible para realizar el análisis de sentimiento.")
+            
+#espacio vacío
+    st.markdown("")
+    st.markdown("")
+    st.markdown("")
+    st.markdown("")
+    st.markdown("")
+    st.markdown("")
+
+    #logotipos git y linkedin centrados con hipervínculo y tamaño 30x30
+    st.markdown(
+        "<p style='text-align: center; margin-bottom: 0px;'>"
+        "<a href='https://dagshub.com/echanchan/BCM_Proyecto_Foundation_Data_Science'>"
+        "<img src='https://raw.githubusercontent.com/lilicasanova/logo/main/github-mark-white.png' alt='GitHub' width='30' height='30'>"
+        "</a>"
+        "</p>",
+        unsafe_allow_html=True
+    )
