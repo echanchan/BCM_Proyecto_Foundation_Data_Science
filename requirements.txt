@@ -1,0 +1,13 @@
+datetime
+matplotlib
+pandas
+plotly
+scikit-learn
+streamlit
+wordcloud
+sentiment-analysis-spanish
+spacy
+sumy
+nltk
+requests
+beautifulsoup4
