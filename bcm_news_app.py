@@ -1,3 +1,6 @@
+# Enlace de Streamlit:
+# https://bcmnewsapp.streamlit.app
+
 from datetime import datetime  # Librerías para manipulación de fechas y tiempos
 import matplotlib.pyplot as plt  # Librería para visualización de datos en 2D
 from matplotlib.patches import Patch  # Módulo para definir formas y patrones en gráficos de Matplotlib
