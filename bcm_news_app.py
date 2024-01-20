@@ -246,7 +246,15 @@ st.markdown(
 
     1. Nathaly Rebeca Bonilla Morales - UCA
     2. Elmer Elias Chanchan - UFG
-    3. Diego Alejandro Manzano Pineda - Lab-Dat
+    3. Diego Alejandro Manzano Pineda - Lab-Dat    
+    
+    """
+)
+st.image("https://dagshub.com/img/favicon.svg", width=50)
+
+st.markdown(
+    """
+    [Proyecto en DagsHub](https://dagshub.com/echanchan/BCM_Proyecto_Foundation_Data_Science)
     """
 )
 
@@ -687,13 +695,3 @@ elif page == "NLP Explorer":
     st.markdown("")
     st.markdown("")
     st.markdown("")
-
-    #logotipos git y linkedin centrados con hipervínculo y tamaño 30x30
-    st.markdown(
-        "<p style='text-align: center; margin-bottom: 0px;'>"
-        "<a href='https://dagshub.com/echanchan/BCM_Proyecto_Foundation_Data_Science'>"
-        "<img src='https://raw.githubusercontent.com/lilicasanova/logo/main/github-mark-white.png' alt='GitHub' width='30' height='30'>"
-        "</a>"
-        "</p>",
-        unsafe_allow_html=True
-    )
